@@ -1,20 +1,40 @@
 package com.company.productapp.controller;
 
-import com.company.productapp.Product;
+import com.company.productapp.entity.Product;
 import com.company.productapp.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//Controller CONSISTS OF REQUEST AND RESPONSE WHEN THE URL IS ACCESSED
+@RestController
 public class ProductController {
+
+    @Autowired
     private ProductService productService;
 
     public ProductController(ProductService productService) {
         this.productService = productService;
+    }
+    @RequestMapping(
+            value = "/",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public String hello() {
+
+        return "What";
+    }
+    @RequestMapping(
+            value = "/products",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public List<Product> findAll() {
+
+        return productService.findAll();
     }
 
     @RequestMapping(
@@ -38,15 +58,6 @@ public class ProductController {
         return productService.findById(id);
     }
 
-
-    @RequestMapping(
-            value = "/products",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
-    public List<Product> findAll() {
-        return productService.findAll();
-    }
 
     @RequestMapping(
             value = "/products/{idProducts}",

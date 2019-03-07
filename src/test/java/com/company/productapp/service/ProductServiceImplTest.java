@@ -1,6 +1,6 @@
 package com.company.productapp.service;
 
-import com.company.productapp.Product;
+import com.company.productapp.entity.Product;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
