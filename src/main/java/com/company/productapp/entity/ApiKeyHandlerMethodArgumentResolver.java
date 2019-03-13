@@ -18,11 +18,11 @@ public class ApiKeyHandlerMethodArgumentResolver implements HandlerMethodArgumen
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
         String value = webRequest.getHeader("api-key");
 
-        if(!value.equals("2345")){
-            throw new ApiKeyException("Unauthorized: Please api 2345");
+        if(value.equals("2345")){
+            return new ApiKey(value);
         }
         else{
-            return new ApiKey(value);
+            throw new ApiKeyException("Unauthorized: Please api 2345");
         }
     }
 }

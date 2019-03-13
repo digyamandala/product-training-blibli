@@ -33,7 +33,7 @@ public class ProductController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public List<Product> findAll() {
+    public List<Product> findAll(ApiKey apiKey) {
         return productService.findAll();
     }
 
@@ -43,7 +43,7 @@ public class ProductController {
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
-    public Product create(@RequestBody Product p){
+    public Product create(@RequestBody Product p, ApiKey apiKey){
 
         return productService.create(p);
     }
@@ -53,7 +53,7 @@ public class ProductController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Product findById(@PathVariable("idProducts") String id){
+    public Product findById(@PathVariable("idProducts") String id, ApiKey apiKey){
         return productService.findById(id);
     }
 
@@ -63,7 +63,7 @@ public class ProductController {
             method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Product delete(@PathVariable("idProducts") String id){
+    public Product delete(@PathVariable("idProducts") String id, ApiKey apiKey){
         return productService.delete(id);
     }
 
@@ -72,7 +72,7 @@ public class ProductController {
             method = RequestMethod.PUT,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Product update(@RequestBody Product p){
+    public Product update(@RequestBody Product p, ApiKey apiKey){
 
         return productService.update(p);
     }
