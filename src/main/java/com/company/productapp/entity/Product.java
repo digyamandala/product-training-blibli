@@ -21,6 +21,7 @@ public class Product {
 
     @Id
     private String id;
+
     private String categoryId;
 
     @Column(nullable = false)

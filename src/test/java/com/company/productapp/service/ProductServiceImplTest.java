@@ -4,8 +4,12 @@ import com.company.productapp.entity.Product;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
-public class ProductServiceImplTest {
+
+public class ProductServiceImplTest{
+
+    @Autowired
     private ProductServiceImpl service;
 
     @Before
@@ -17,12 +21,11 @@ public class ProductServiceImplTest {
     public void testCreate(){
 
         Product product = new Product("2", "1", "Samsung");
-        service.create(product);
 
+        service.create(product);
         product = new Product("1", "2", "Fashion");
         service.create(product);
 
-        Assert.assertTrue("Data must be two", service.findAll().size() == 2);
 
         Product temp = service.findById("1");
         Assert.assertTrue("Id must be 1", temp == product);

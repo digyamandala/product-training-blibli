@@ -16,6 +16,7 @@ import java.util.Optional;
 public class ProductServiceImpl implements ProductService {
 
 //  private ArrayList<Product> products = new ArrayList<>();
+
     @Autowired
     private ProductRepository productRepository;
 
@@ -28,15 +29,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product update(Product product) {
-//        Product curr;
-//        for (int i = 0; i < products.size(); i++) {
-//            curr = products.get(i);
-//            if (product.getId().equals(curr.getId())) {
-//                products.set(i, product);
-//                return products.get(i);
-//            }
-//        }
-//        return null;
 
         Optional<Product> optional = productRepository.findById(product.getId());
         if(optional.isPresent()){
@@ -56,16 +48,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product delete(String id) {
-//        Product curr;
-//        for (int i = 0; i < products.size(); i++) {
-//            curr = products.get(i);
-//
-//            if (id.equals(curr.getId())) {
-//                products.remove(curr);
-//                return curr;
-//            }
-//        }
-//        return null;
 
         Optional<Product> optional = productRepository.findById(id);
 
@@ -81,12 +63,6 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product findById(String id) {
 
-//        for (int i = 0; i < products.size(); i++) {
-//            if (id.equals(products.get(i).getId())) {
-//                return products.get(i);
-//            }
-//        }
-//        return null;
 
         Optional<Product> optional = productRepository.findById(id);
         if(optional.isPresent()){

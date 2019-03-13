@@ -1,6 +1,7 @@
 package com.company.productapp.controller;
 
 import com.company.productapp.entity.Product;
+import com.company.productapp.entity.ApiKey;
 import com.company.productapp.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -18,14 +19,14 @@ public class ProductController {
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
+
     @RequestMapping(
             value = "/",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public String hello() {
-
-        return "What";
+    public String hello(ApiKey apiKey) {
+        return "hello";
     }
     @RequestMapping(
             value = "/products",
@@ -33,7 +34,6 @@ public class ProductController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public List<Product> findAll() {
-
         return productService.findAll();
     }
 
@@ -54,7 +54,6 @@ public class ProductController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public Product findById(@PathVariable("idProducts") String id){
-
         return productService.findById(id);
     }
 
@@ -74,6 +73,9 @@ public class ProductController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public Product update(@RequestBody Product p){
+
         return productService.update(p);
     }
+
 }
+
