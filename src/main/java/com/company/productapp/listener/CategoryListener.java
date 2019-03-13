@@ -22,7 +22,10 @@ public class CategoryListener {
     public void listenTopicCategory(String body) throws IOException {
 
         List<Category> categories = objectMapper.readValue(body, new TypeReference<List<Category>>(){});
-        log.info("Categories Received {}", categories);
+
+        for (Category c: categories) {
+            log.info("Categories Received {}", c);
+        }
     }
 
 }
